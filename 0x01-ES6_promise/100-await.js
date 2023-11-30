@@ -8,12 +8,12 @@ export default async function asyncUploadUser() {
     const resUser = await createUser();
     res = {
       photo: resPhoto,
-      user: resUser
+      user: resUser,
     };
   } catch (err) {
     res = {
       photo: null,
-      user: null
+      user: null,
     };
   }
 
