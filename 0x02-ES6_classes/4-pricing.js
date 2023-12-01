@@ -1,6 +1,6 @@
 import Currency from './3-currency';
 
-class Pricing {
+export default class Pricing {
   constructor(amount, currency) {
     this.amount = amount;
     this.currency = currency;
@@ -10,10 +10,11 @@ class Pricing {
    * @param {Number} amount
    */
   set amount(amount) {
-    if (typeof amount !== 'number') {
+    if (typeof amount === 'number') {
+      this._amount = amount;
+    } else {
       throw new TypeError('Amount must be a Number');
     }
-    this._amount = amount;
   }
 
   get amount() {
@@ -55,5 +56,3 @@ class Pricing {
     return amount * conversionRate;
   }
 }
-
-export default Pricing;
