@@ -7,7 +7,7 @@ export default class HolbertonCourse {
 
   /**
    * @param {String} name
-   */
+  **/
   set name(name) {
     if (typeof name === 'string') {
       this._name = name;
@@ -22,7 +22,7 @@ export default class HolbertonCourse {
 
   /**
    * @param {Number} length
-   */
+  **/
   set length(length) {
     if (typeof length === 'number') {
       this._length = length;
@@ -37,7 +37,7 @@ export default class HolbertonCourse {
 
   /**
    * @param {Array} students
-   */
+  **/
   set students(students) {
     if (students instanceof Array) {
       this._students = students;
