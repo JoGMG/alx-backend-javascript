@@ -1,4 +1,4 @@
-class Building {
+export default class Building {
   constructor(sqft) {
     if (this.constructor !== Building) {
       if (typeof this.evacuationWarningMessage !== 'function') {
@@ -14,15 +14,14 @@ class Building {
    * @param {Number} sqft
    */
   set sqft(sqft) {
-    if (typeof sqft !== 'number') {
+    if (typeof sqft === 'number') {
+      this._sqft = sqft;
+    } else {
       throw new TypeError('sqft nust be a number');
     }
-    this._sqft = sqft;
   }
 
   get sqft() {
     return this._sqft;
   }
 }
-
-export default Building;
