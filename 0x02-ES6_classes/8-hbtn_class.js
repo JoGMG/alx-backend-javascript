@@ -20,13 +20,12 @@ export default class HolbertonClass {
     this._location = value;
   }
 
-  [Symbol.toPrimitive](hint) {
-    if (hint === 'number') {
+  [Symbol.toPrimitive](type) {
+    if (type === 'number') {
       return this.size;
     }
-    if (hint === 'string') {
+    if (type === 'string') {
       return this.location;
     }
-    return this;
   }
 }
