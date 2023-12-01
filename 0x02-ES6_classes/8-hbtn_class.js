@@ -27,5 +27,6 @@ export default class HolbertonClass {
     if (type === 'string') {
       return this.location;
     }
+    return this;
   }
 }
