@@ -4,20 +4,26 @@ export default class Airport {
     this.code = code;
   }
 
-  get name() {
-    return this._name;
-  }
-
+  /**
+   * @param {String} value
+   */
   set name(value) {
     this._name = value;
   }
 
-  get code() {
-    return this._code;
+  get name() {
+    return this._name;
   }
 
+  /**
+   * @param {String} value
+   */
   set code(value) {
     this._code = value;
+  }
+
+  get code() {
+    return this._code;
   }
 
   get [Symbol.toStringTag]() {
