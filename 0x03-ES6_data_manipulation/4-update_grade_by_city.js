@@ -9,9 +9,9 @@ export default function updateStudentGradeByCity(
 
   const gradeStudents = filterStudents.map(
     (student) => {
-      for (const gradeInfo of newGrades) {
-        if (student.id === gradeInfo.studentId) {
-          student.grade = gradeInfo.grade; // eslint-disable-line no-param-reassign
+      for (const gradeObj of newGrades) {
+        if (student.id === gradeObj.studentId) {
+          student.grade = gradeObj.grade; // eslint-disable-line no-param-reassign
         }
       }
       if (student.grade === undefined) {
