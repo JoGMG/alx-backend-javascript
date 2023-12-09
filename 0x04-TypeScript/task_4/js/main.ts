@@ -1,8 +1,8 @@
-export const cpp: Subjects.Cpp = new Subjects.Cpp();
-export const java: Subjects.Java = new Subjects.Java();
-export const react: Subjects.React = new Subjects.React();
+const cpp: Subjects.Cpp = new Subjects.Cpp();
+const java: Subjects.Java = new Subjects.Java();
+const react: Subjects.React = new Subjects.React();
 
-export const cTeacher: Subjects.Teacher = {
+const cTeacher: Subjects.Teacher = {
   firstName: 'Tagon',
   lastName: 'Niruha',
   experienceTeachingC: 10,
