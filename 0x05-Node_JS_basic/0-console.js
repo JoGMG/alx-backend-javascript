@@ -2,8 +2,8 @@
  * A function named `displayMessage` that prints in
  * `STDOUT` the string argument.
  */
-function displayMessage(message) {
-  console.log(message)
+function displayMessage (message) {
+  console.log(message);
 }
 
-module.exports = displayMessage
+module.exports = displayMessage;
