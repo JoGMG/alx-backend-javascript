@@ -7,7 +7,7 @@
  */
 
 const express = require('express');
-import linkRoutes from './routes';
+const linkRoutes = require('./routes');
 
 const app = express();
 linkRoutes(app);
