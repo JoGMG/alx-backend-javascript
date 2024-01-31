@@ -42,11 +42,13 @@ async function countStudents(filePath) {
   }
 
   for (const field in fields) {
-    output += `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}\n`.trim();
+    if (fields[field]) {
+      output += `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}\n`;
+    }
   }
-  
-  console.log(output)
-  return output;
+
+  console.log(output.trim());
+  return output.trim();
 }
 
 module.exports = countStudents;
