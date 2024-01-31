@@ -60,7 +60,7 @@ app.get('/', (request, response) => {
 
 app.get('/students/:major', async (request, response) => {
   try {
-    const major = request.params;
+    const major = request.params.major;
     if (!MAJOR.includes(major)) {
       response.status(500).send('Major parameter must be CS or SWE');
       return;
