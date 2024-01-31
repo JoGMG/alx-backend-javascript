@@ -62,7 +62,7 @@ const app = http.createServer(async (request, response) => {
       const data = await countStudents(process.argv[2]);
       response.end(`This is the list of our students\n${data}`);
     } catch (error) {
-      response.end(error.message);
+      response.end(`This is the list of our students\n${error.message}`);
     }
   } else {
     response.end('Hello Holberton School!');
