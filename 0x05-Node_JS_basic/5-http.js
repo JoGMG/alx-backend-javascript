@@ -16,8 +16,40 @@
  *    are not a valid student!
  */
 
+const fs = require('fs').promises;
 const http = require('http');
-const countStudents = require('./3-read_file_async')
+
+async function countStudents(filePath) {
+  let data;
+
+  try {
+    data = await fs.readFile(filePath, 'utf-8');
+  } catch (err) {
+    throw new Error('Cannot load the database');
+  }
+
+  const lines = data.split('\n');
+  const students = lines.slice(1).filter((line) => line !== '');
+
+  let output = `Number of students: ${students.length}\n`;
+
+  const fields = {};
+  for (const student of students) {
+    const field = student.split(',')[3].trim();
+    if (!fields[field]) {
+      fields[field] = [];
+    }
+    fields[field].push(student.split(',')[0]);
+  }
+
+  for (const field in fields) {
+    if (fields[field]) {
+      output += `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}\n`;
+    }
+  }
+
+  return output.trim();
+}
 
 const app = http.createServer(async (request, response) => {
   response.statusCode = 200;
