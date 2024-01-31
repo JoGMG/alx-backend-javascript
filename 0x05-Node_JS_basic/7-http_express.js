@@ -56,14 +56,28 @@ app.get('/', (request, response) => {
   response.send('Hello Holberton School!');
 });
 
-app.get('/students', async (request, response) => {
+app.get('/students/:major', async (request, response) => {
   try {
-    const data = await countStudents(process.argv[2]);
-    response.send(`This is the list of our students\n${data}`);
+    const major = request.params;
+    if (!MAJOR.includes(major)) {
+      response.status(500).send('Major parameter must be CS or SWE');
+      return;
+    }
+
+    let dataLine;
+    const data = await readDatabase(process.argv[2]);
+    const dataLines = data.split('\n');
+    for (const line of dataLines) {
+      if (line.includes(major)) {
+        dataLine += line.split('List: ')[1];
+      }
+    }
+    response.status(200).send(dataLine);
   } catch (error) {
-    response.status(500).send(`This is the list of our students\n${error.message}`);
+    response.status(500).send(error.message);
   }
 });
+
 
 app.listen(1245);
 
