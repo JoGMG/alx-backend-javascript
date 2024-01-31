@@ -48,7 +48,7 @@ async function countStudents(filePath) {
     }
   }
 
-  return output.trim();
+  return output;
 }
 
 const app = http.createServer(async (request, response) => {
