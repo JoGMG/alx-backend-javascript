@@ -27,7 +27,7 @@ function countStudents(filePath) {
   }
 
   const lines = data.split('\n');
-  const students = lines.slice(1).filter(line => (line !== ''));
+  const students = lines.slice(1).filter((line) => line !== '');
 
   console.log(`Number of students: ${students.length}`);
 
@@ -41,7 +41,9 @@ function countStudents(filePath) {
   }
 
   for (const field in fields) {
-    console.log(`Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`);
+    if (fields[field]) {
+      console.log(`Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`);
+    }
   }
 }
 
