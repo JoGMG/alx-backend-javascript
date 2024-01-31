@@ -71,7 +71,7 @@ app.get('/students/:major', async (request, response) => {
     const dataLines = data.split('\n');
     for (const line of dataLines) {
       if (line.includes(major)) {
-        dataLine += line.split('List: ')[1];
+        dataLine += line.split('List: ')[1].trim();
       }
     }
     response.status(200).send(dataLine);
