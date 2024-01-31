@@ -6,11 +6,10 @@
  *  - It should use the port `1245`
  */
 
+const express = require('express');
 import linkRoutes from './routes';
 
-const express = require('express');
-
-app = express();
+const app = express();
 linkRoutes(app);
 app.listen(1245);
 
