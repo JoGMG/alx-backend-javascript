@@ -13,4 +13,5 @@ const app = express();
 linkRoutes(app);
 app.listen(1245);
 
+module.exports = app;
 export default app;
