@@ -5,13 +5,13 @@
  *    :major` to the `StudentsController`
  */
 
-const AppController = require("../controllers/AppController");
-const StudentsController = require("../controllers/StudentsController");
+const AppController = require('../controllers/AppController');
+const StudentsController = require('../controllers/StudentsController');
 
-function Routes(app) {
+function linkRoutes(app) {
   app.get('/', AppController.getHomepage);
   app.get('/students', StudentsController.getAllStudents);
   app.get('/students/:major', StudentsController.getAllStudentsByMajor);
-};
+}
 
-module.exports = Routes;
+module.exports = linkRoutes;

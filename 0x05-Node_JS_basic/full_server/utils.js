@@ -15,9 +15,9 @@ async function readDatabase(filePath) {
   let data;
 
   try {
-      data = await fs.readFile(filePath, 'utf-8');
+    data = await fs.readFile(filePath, 'utf-8');
   } catch (error) {
-      throw new Error('Cannot load the database');
+    throw new Error('Cannot load the database');
   }
 
   const dataLines = data.split('\n');
@@ -31,7 +31,7 @@ async function readDatabase(filePath) {
     const field = student[3].trim();
     const firstName = student[0];
     if (!fields[field]) {
-        fields[field] = [];
+      fields[field] = [];
     }
     fields[field].push(firstName);
   });
@@ -44,14 +44,5 @@ async function readDatabase(filePath) {
 
   return output;
 }
-
-readDatabase("database.csv")
-    .then(() => {
-        console.log("Done!");
-    })
-        .catch((error) => {
-        console.log(error);
-    });
-console.log("After!");
 
 module.exports = readDatabase;

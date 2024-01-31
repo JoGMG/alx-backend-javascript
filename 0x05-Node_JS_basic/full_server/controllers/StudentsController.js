@@ -1,7 +1,7 @@
 /**
  * Inside the file `full_server/controllers/StudentsController.js`,
  * create a class named `StudentsController`. Add two static methods:
- * 
+ *
  * The first one is `getAllStudents`:
  *  - The method accepts `request` and `response` as argument
  *  - It should return a status 200
@@ -15,7 +15,7 @@
  *      students in FIELD: 6. List: LIST_OF_FIRSTNAMES`
  *  - If the database is not available, it should return a status 500
  *    and the error message `Cannot load the database`
- * 
+ *
  * The second one is `getAllStudentsByMajor`:
  *  - The method accepts `request` and `response` as argument
  *  - It should return a status 200
@@ -31,7 +31,8 @@
  *    the error `message Cannot load the database`
  */
 
-const readDatabase = require("../utils");
+const readDatabase = require('../utils');
+
 const MAJOR = ['CS', 'SWE'];
 
 class StudentsController {
