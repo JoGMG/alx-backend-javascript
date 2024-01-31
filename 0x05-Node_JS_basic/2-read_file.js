@@ -21,13 +21,13 @@ function countStudents(filePath) {
   let data;
 
   try {
-    data = fs.readFileSync(filePath, 'utf-8')
+    data = fs.readFileSync(filePath, 'utf-8');
   } catch (err) {
     throw new Error('Cannot load the database');
-  };
+  }
 
-  const  lines = data.split('\n');
-  const students = lines.slice(1).filter(line => line != '');
+  const lines = data.split('\n');
+  const students = lines.slice(1).filter(line => (line !== ''));
 
   console.log(`Number of students: ${students.length}`);
 
