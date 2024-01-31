@@ -30,7 +30,7 @@ async function countStudents(filePath) {
   const lines = data.split('\n');
   const students = lines.slice(1).filter((line) => line !== '');
 
-  let output = `Number of students: ${students.length}\n`;
+  console.log(`Number of students: ${students.length}`);
 
   const fields = {};
   for (const student of students) {
@@ -43,12 +43,9 @@ async function countStudents(filePath) {
 
   for (const field in fields) {
     if (fields[field]) {
-      output += `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}\n`;
+      console.log(`Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`);
     }
   }
-
-  console.log(output.trim());
-  return output.trim();
 }
 
 module.exports = countStudents;
