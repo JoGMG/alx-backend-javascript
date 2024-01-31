@@ -67,7 +67,7 @@ app.get('/students/:major', async (request, response) => {
     }
 
     let dataLine;
-    const data = await readDatabase(process.argv[2]);
+    const data = await countStudents(process.argv[2]);
     const dataLines = data.split('\n');
     for (const line of dataLines) {
       if (line.includes(major)) {
