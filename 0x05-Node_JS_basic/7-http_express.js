@@ -52,6 +52,8 @@ async function countStudents(filePath) {
 
 const app = express();
 
+const MAJOR = ['CS', 'SWE'];
+
 app.get('/', (request, response) => {
   response.send('Hello Holberton School!');
 });
