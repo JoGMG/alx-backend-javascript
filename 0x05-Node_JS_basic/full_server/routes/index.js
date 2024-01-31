@@ -15,4 +15,3 @@ function linkRoutes(app) {
 }
 
 module.exports = linkRoutes;
-export default linkRoutes;
