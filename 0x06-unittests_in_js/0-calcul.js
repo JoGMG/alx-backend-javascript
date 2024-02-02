@@ -4,8 +4,8 @@
  * their sum.
  */
 function calculateNumber(a, b) {
-    result = a + b;
-    return Math.ceil(result);
+    result = Math.round(a) + Math.round(b);
+    return result;
 }
 
 module.exports = calculateNumber;
