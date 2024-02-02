@@ -47,39 +47,23 @@ async function countStudents(filePath) {
     }
   }
 
-  return output;
+  return output.trim();
 }
 
 const app = express();
-
-const MAJOR = ['CS', 'SWE'];
 
 app.get('/', (request, response) => {
   response.send('Hello Holberton School!');
 });
 
-app.get('/students/:major', async (request, response) => {
+app.get('/students', async (request, response) => {
   try {
-    const major = request.params.major;
-    if (!MAJOR.includes(major)) {
-      response.status(500).send('Major parameter must be CS or SWE');
-      return;
-    }
-
-    let dataLine;
     const data = await countStudents(process.argv[2]);
-    const dataLines = data.split('\n');
-    for (const line of dataLines) {
-      if (line.includes(major)) {
-        dataLine += line.split('List: ')[1].trim();
-      }
-    }
-    response.status(200).send(dataLine);
+    response.send(`This is the list of our students\n${data}`);
   } catch (error) {
-    response.status(500).send(error.message);
+    response.status(500).send(`This is the list of our students\n${error.message}`);
   }
 });
-
 
 app.listen(1245);
 
