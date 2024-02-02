@@ -36,13 +36,13 @@ async function readDatabase(filePath) {
     fields[field].push(firstName);
   });
 
-  for (const field in fields) {
-    if (fields[field]) {
-      output += `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}\n`;
-    }
-  }
+  // for (const field in fields) {
+  //   if (fields[field]) {
+  //     output += `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}\n`;
+  //   }
+  // }
 
-  return output;
+  return fields;
 }
 
 module.exports = readDatabase;
