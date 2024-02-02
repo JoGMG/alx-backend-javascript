@@ -23,10 +23,9 @@ async function readDatabase(filePath) {
   const dataLines = data.split('\n');
   const students = dataLines.slice(1).filter((line) => line !== '');
 
-  let output = `Number of students: ${students.length}\n`;
-
   const fields = {};
-  dataLines.forEach((line) => {
+  fields['total'] = students.length;
+  students.forEach((line) => {
     const student = line.split(',');
     const field = student[3].trim();
     const firstName = student[0];

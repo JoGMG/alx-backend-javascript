@@ -39,7 +39,13 @@ class StudentsController {
   static async getAllStudents(request, response) {
     try {
       const data = await readDatabase(process.argv[2]);
-      response.status(200).send(`This is the list of our students\n${data}`);
+      let output = `Number of students: ${data.total}\n`;
+      for (const field in data) {
+        if (field != 'total') {
+          output += `Number of students in ${field}: ${data[field].length}. List: ${data[field].join(', ')}\n`;
+        }
+      }
+      response.status(200).send(`This is the list of our students\n${output.trim()}`);
     } catch (error) {
       response.status(500).send(`This is the list of our students\n${error.message}`);
     }
@@ -47,21 +53,20 @@ class StudentsController {
 
   static async getAllStudentsByMajor(request, response) {
     try {
-      const major = request.params;
+      const major = request.params.major;
       if (!MAJOR.includes(major)) {
         response.status(500).send('Major parameter must be CS or SWE');
         return;
       }
 
-      let dataLine;
       const data = await readDatabase(process.argv[2]);
-      const dataLines = data.split('\n');
-      for (const line of dataLines) {
-        if (line.includes(major)) {
-          dataLine += line.split('List: ')[1];
+      let output;
+      for (const field in data) {
+        if (major === field) {
+          output = `List: ${data[field].join(', ')}`;
         }
       }
-      response.status(200).send(dataLine);
+      response.status(200).send(output.trim());
     } catch (error) {
       response.status(500).send(error.message);
     }
