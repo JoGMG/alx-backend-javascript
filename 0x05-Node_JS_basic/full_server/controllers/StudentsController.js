@@ -47,7 +47,7 @@ class StudentsController {
       }
       response.status(200).send(`This is the list of our students\n${output.trim()}`);
     } catch (error) {
-      response.status(500).send(`This is the list of our students\n${error.message}`);
+      response.status(500).send(error.message);
     }
   }
 
