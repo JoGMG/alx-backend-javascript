@@ -2,23 +2,31 @@ const assert = require('assert');
 const calculateNumber = require('./0-calcul');
 
 describe('calculateNumber', function () {
-  it('both numbers integer', function () {
-    assert.equal(calculateNumber(1, 3), 4);
+  it('a and b as float integers', function () {
+    assert.equal(calculateNumber(1.0, 3.0), 4);
   });
 
-  it('second number float and first number integer', function () {
-    assert.equal(calculateNumber(1, 3.7), 5);
+  it('rounding up a', function () {
+    assert.equal(calculateNumber(1.7, 3.0), 5);
   });
 
-  it('first number float and second number integer', function () {
-    assert.equal(calculateNumber(1.2, 3), 4);
+  it('rounding up b', function () {
+    assert.equal(calculateNumber(1.0, 3.7), 5);
   });
 
-  it('both numbers float with decimal > 5', function () {
-    assert.equal(calculateNumber(1.2, 3.7), 5);
+  it('rounding up a and b', function () {
+    assert.equal(calculateNumber(1.7, 3.7), 6)
   });
 
-  it('both numbers float with decimal < 5', function () {
-    assert.equal(calculateNumber(1.5, 3.7), 6)
+  it('rounding down a', function () {
+    assert.equal(calculateNumber(1.2, 3.0), 4);
+  });
+
+  it('rounding down b', function () {
+    assert.equal(calculateNumber(1.0, 3.2), 4)
+  });
+
+  it('rounding down a and b', function () {
+    assert.equal(calculateNumber(1.2, 3.2), 4)
   });
 });
