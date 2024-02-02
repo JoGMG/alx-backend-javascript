@@ -39,7 +39,7 @@ class StudentsController {
   static async getAllStudents(request, response) {
     try {
       const data = await readDatabase(process.argv[2]);
-      let output = `Number of students: ${data.total}\n`;
+      let output;
       for (const field in data) {
         if (field !== 'total') {
           output += `Number of students in ${field}: ${data[field].length}. List: ${data[field].join(', ')}\n`;
