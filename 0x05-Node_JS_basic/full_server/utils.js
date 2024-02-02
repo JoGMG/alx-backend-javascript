@@ -24,7 +24,7 @@ async function readDatabase(filePath) {
   const students = dataLines.slice(1).filter((line) => line !== '');
 
   const fields = {};
-  fields['total'] = students.length;
+  fields.total = students.length;
   students.forEach((line) => {
     const student = line.split(',');
     const field = student[3].trim();
@@ -34,12 +34,6 @@ async function readDatabase(filePath) {
     }
     fields[field].push(firstName);
   });
-
-  // for (const field in fields) {
-  //   if (fields[field]) {
-  //     output += `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}\n`;
-  //   }
-  // }
 
   return fields;
 }

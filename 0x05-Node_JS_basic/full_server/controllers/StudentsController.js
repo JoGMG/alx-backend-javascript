@@ -41,7 +41,7 @@ class StudentsController {
       const data = await readDatabase(process.argv[2]);
       let output = `Number of students: ${data.total}\n`;
       for (const field in data) {
-        if (field != 'total') {
+        if (field !== 'total') {
           output += `Number of students in ${field}: ${data[field].length}. List: ${data[field].join(', ')}\n`;
         }
       }
@@ -53,7 +53,7 @@ class StudentsController {
 
   static async getAllStudentsByMajor(request, response) {
     try {
-      const major = request.params.major;
+      const { major } = request.params;
       if (!MAJOR.includes(major)) {
         response.status(500).send('Major parameter must be CS or SWE');
         return;
