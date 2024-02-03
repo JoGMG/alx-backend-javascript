@@ -4,33 +4,25 @@ const Utils = require('./utils');
 const sendPaymentRequestToApi = require('./3-payment');
 
 describe('sendPaymentRequestToApi', function() {
-  it('validates the usage of the Utils function and console.log 1', function() {
-    const calculateNumberStub = sinon.stub(Utils, 'calculateNumber');
-    calculateNumberStub.returns(120);
+  let consoleLogSpy;
 
-    const consoleLogSpy = sinon.spy(console, 'log');
+  beforeEach(function() {
+    // Set up the spy before each test
+    consoleLogSpy = sinon.spy(console, 'log');
+  });
 
-    sendPaymentRequestToApi(100, 20);
-
-    expect(calculateNumberStub.calledOnceWithExactly('SUM', 100, 20)).to.be.true;
-    expect(consoleLogSpy.calledWithExactly('The total is: 120')).to.be.true;
-
-    calculateNumberStub.restore();
+  afterEach(function() {
+    // Clean up the spy after each test
     consoleLogSpy.restore();
   });
 
-  it('validates the usage of the Utils function and console.log 1', function() {
-    const calculateNumberStub = sinon.stub(Utils, 'calculateNumber');
-    calculateNumberStub.returns(20);
+  it('logs the total for inputs 100 and 20', function() {
+    sendPaymentRequestToApi(100, 20);
+    expect(consoleLogSpy.calledOnceWithExactly('The total is: 120')).to.be.true;
+  });
 
-    const consoleLogSpy = sinon.spy(console, 'log');
-
+  it('logs the total for inputs 10 and 10', function() {
     sendPaymentRequestToApi(10, 10);
-
-    expect(calculateNumberStub.calledOnceWithExactly('SUM', 10, 10)).to.be.true;
-    expect(consoleLogSpy.calledWithExactly('The total is: 20')).to.be.true;
-
-    calculateNumberStub.restore();
-    consoleLogSpy.restore();
+    expect(consoleLogSpy.calledOnceWithExactly('The total is: 20')).to.be.true;
   });
 });
