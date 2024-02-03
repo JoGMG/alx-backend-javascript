@@ -13,13 +13,7 @@ app.get('/cart/:id(\\d+)', (request, response) => {
 });
 
 app.get('/available_payments', (request, response) => {
-  const obj = {
-    payment_methods: {
-      credit_cards: true,
-      paypal: false
-    }
-  }
-  response.json(`${obj}`);
+  response.json({payment_methods: { credit_cards: true, paypal: false }});
 });
 
 app.post('/login', (request, response) => {

@@ -28,15 +28,9 @@ describe('Index page', () => {
   });
 
   it('GET /available_payments should return correct status code and response', (done) => {
-    const obj = {
-      payment_methods: {
-        credit_cards: true,
-        paypal: false
-      }
-    }
     request.get(`${url}/available_payments`, (error, response, body) => {
       expect(response.statusCode).to.be.equal(200);
-      expect(JSON.parse(body)).to.be.deep.equal(obj);
+      expect(JSON.parse(body)).to.be.deep.equal({payment_methods: { credit_cards: true, paypal: false }});
       done();
     });
   });
