@@ -13,12 +13,20 @@ app.get('/cart/:id(\\d+)', (request, response) => {
 });
 
 app.get('/available_payments', (request, response) => {
-  response.json({ payment_methods: { credit_cards: true, paypal: false } });
+  const paymentMethods = {
+    payment_methods: {
+      credit_cards: true,
+      paypal: false
+    }
+  };
+  response.json(paymentMethods);
 });
 
 app.post('/login', (request, response) => {
-  const userName = request.body.userName;
-  response.send(`Welcome ${userName}`);
+  const username = request.body.userName;
+  if (username) {
+    response.send(`Welcome ${username}`);
+  }
 });
 
 app.listen(port, () => {
